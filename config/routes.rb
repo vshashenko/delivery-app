@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get '/deliveries', to: 'deliveries#index'
+
+  get '/deliveries/total_cost', to: 'deliveries#total_cost'
 end

@@ -15,4 +15,9 @@ class DeliveriesController < ApplicationController
 
     render json: { deliveries: deliveries, meta: meta }
   end
+
+  def total_cost
+    total = Delivery.sum(:cost)
+    render json: { total_cost: total }
+  end
 end
