@@ -12,12 +12,12 @@
 
 ActiveRecord::Schema[8.0].define(version: 2024_12_22_115301) do
   create_table "deliveries", force: :cascade do |t|
-    t.string "pickup_address"
-    t.string "delivery_address"
-    t.float "weight"
-    t.float "distance"
-    t.datetime "scheduled_time"
-    t.decimal "cost"
+    t.string "pickup_address", null: false
+    t.string "delivery_address", null: false
+    t.float "weight", null: false
+    t.float "distance", null: false
+    t.datetime "scheduled_time", null: false
+    t.decimal "cost", null: false
     t.string "driver_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
