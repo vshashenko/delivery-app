@@ -1,0 +1,16 @@
+#delivery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 600px;
+}
+
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

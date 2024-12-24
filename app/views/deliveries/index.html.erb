@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag 'deliveries-index' %>
+
+<%= image_tag("foremore-logo.jpeg", id: "logo") %>
+<h1>Deliveries</h1>
+
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %>
+
+<%= form_with(url: deliveries_path, method: :get, local: true) do %>
+  <div>
+    <%= label_tag :pickup_address, "Filter by Pickup Address:" %>
+    <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
+    <%= label_tag :driver_name, "Filter by Driver name:" %>
+    <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+    <%= submit_tag "Filter" %>
+  </div>
+<% end %>
+
+<%= link_to 'Clear filter', deliveries_path %>
+
+<%= paginate @deliveries %>
+
+<div id="deliveries">
+  <% included_columns = ['pickup_address', 'delivery_address', 'weight', 'distance', 'scheduled_time', 'cost', 'driver_name'] %>
+  <% included_columns.each do |column| %>
+    <div><%= column.humanize %></div>
+  <% end %>
+
+  <% @deliveries.each do |delivery| %>
+    <div><%= delivery.pickup_address %></div>
+    <div><%= delivery.delivery_address %></div>
+    <div><%= delivery.weight %></div>
+    <div><%= delivery.distance %></div>
+    <div><%= delivery.scheduled_time.strftime("%B %d, %Y %H:%M") %></div>
+    <div><%= number_to_currency(delivery.cost) %></div>
+    <div><%= delivery.driver_name || "N/A" %></div>
+  <% end %>
+
+  <div id="total-cost">
+    <strong>Total Cost: </strong><%= number_to_currency(@total_cost) %>
+  </div>
+
+</div>
