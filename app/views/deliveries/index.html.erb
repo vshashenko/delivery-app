@@ -1,34 +1,36 @@
 <%= stylesheet_link_tag 'deliveries-index' %>
 
-<%= image_tag("foremore-logo.jpeg", id: "logo") %>
-<h1>Deliveries</h1>
+<div id="header">
+  <%= image_tag("foremore-logo.jpeg", id: "logo") %>
+  <h1>Deliveries</h1>
 
-<% if flash[:notice] %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+  <% if flash[:notice] %>
+    <div id="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
-<%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %>
+  <%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %>
 
-<%= form_with(url: deliveries_path, method: :get, local: true) do %>
-  <div>
-    <%= label_tag :pickup_address, "Filter by Pickup Address:" %>
-    <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
-    <%= label_tag :driver_name, "Filter by Driver name:" %>
-    <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+  <%= form_with(url: deliveries_path, method: :get, local: true) do %>
+    <div id="filter">
+      <%= label_tag :pickup_address, "Filter by Pickup Address:" %>
+      <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
+      <%= label_tag :driver_name, "Filter by Driver name:" %>
+      <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+    </div>
     <%= submit_tag "Filter" %>
-  </div>
-<% end %>
+  <% end %>
 
-<%= link_to 'Clear filter', deliveries_path %>
+  <%= link_to 'Clear filter', deliveries_path %>
+</div>
 
 <%= paginate @deliveries %>
 
 <div id="deliveries">
   <% included_columns = ['pickup_address', 'delivery_address', 'weight', 'distance', 'scheduled_time', 'cost', 'driver_name'] %>
   <% included_columns.each do |column| %>
-    <div><%= column.humanize %></div>
+    <div class="header"><strong><%= column.humanize %></strong></div>
   <% end %>
 
   <% @deliveries.each do |delivery| %>
@@ -42,7 +44,7 @@
   <% end %>
 
   <div id="total-cost">
-    <strong>Total Cost: </strong><%= number_to_currency(@total_cost) %>
+    <strong>Total Cost:<br></strong><%= number_to_currency(@total_cost) %>
   </div>
 
 </div>

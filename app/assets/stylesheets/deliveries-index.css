@@ -1,6 +1,18 @@
+#notice {
+  background-color: #d9f7d9;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 #new-delivery {
   display: block;
   margin: 20px 0;
+}
+
+#filter {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2px;
 }
 
 .pagination {
@@ -11,14 +23,35 @@
 #deliveries {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  grid-template-rows: minmax(30px, auto) auto;
+  gap: 1px;
   margin: 20px 0;
+  background-color: #fbfbfc;
 }
 
-#deliveries > div {
+#deliveries > div.header {
+  background-color: #bcbcbc;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+#deliveries > div:not(.header):not(#total-cost) {
   background-color: lightgrey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+}
+
+#deliveries > div#total-cost {
+  background-color: lightgrey;
+  text-align: center;
 }
 
 #total-cost {
-  grid-column: 6 / 7;
+  grid-column: 6;
 }

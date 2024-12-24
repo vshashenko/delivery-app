@@ -1,6 +1,6 @@
 #delivery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   gap: 10px;
   max-width: 600px;
 }
@@ -11,6 +11,8 @@ input[type="text"] {
 }
 
 #submit {
-  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
   margin-bottom: 10px;
 }

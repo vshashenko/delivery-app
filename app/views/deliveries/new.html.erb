@@ -1,48 +1,51 @@
 <%= stylesheet_link_tag 'deliveries-new' %>
 
-<%= image_tag("foremore-logo.jpeg", id: "logo") %>
-<h1>New delivery</h1>
+<div id="header">
+  <%= image_tag("foremore-logo.jpeg", id: "logo") %>
+  <h1>New delivery</h1>
 
   <% if @delivery.errors.any? %>
-    <div class="errors">
-      <h2>There were some errors with your submission:</h2>
-      <ul>
-        <% @delivery.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="errors">
+    <h2>There were some errors with your submission:</h2>
+    <ul>
+      <% @delivery.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
   <% end %>
 
   <%# TODO try Using Rails UJS for Validation? %>
   <%# TODO make 1st grid column size of longest label %>
   <%= form_with(model: @delivery, method: :post) do |form| %>
-    <div id="delivery">
-      <%= form.label :pickup_address %>
-      <%= form.text_field :pickup_address, required: true, minlength: 3, maxlength: 255 %>
+  <div id="delivery">
+    <%= form.label :pickup_address %>
+    <%= form.text_field :pickup_address, required: true, minlength: 3, maxlength: 255 %>
 
-      <%= form.label :delivery_address %>
-      <%= form.text_field :delivery_address, required: true, minlength: 3, maxlength: 255 %>
+    <%= form.label :delivery_address %>
+    <%= form.text_field :delivery_address, required: true, minlength: 3, maxlength: 255 %>
 
-      <%= form.label :weight %>
-      <%= form.number_field :weight, required: true, min: 1 %>
+    <%= form.label :weight %>
+    <%= form.number_field :weight, required: true, min: 1 %>
 
-      <%= form.label :distance %>
-      <%= form.number_field :distance, required: true, min: 1 %>
+    <%= form.label :distance %>
+    <%= form.number_field :distance, required: true, min: 1 %>
 
-      <%= form.label :scheduled_time %>
-      <%= form.datetime_local_field :scheduled_time, required: true %>
+    <%= form.label :scheduled_time %>
+    <%= form.datetime_local_field :scheduled_time, required: true %>
 
-      <%= form.label :cost %>
-      <%= form.number_field :cost, step: 0.01, required: true, min: 0.01 %>
+    <%= form.label :cost %>
+    <%= form.number_field :cost, step: 0.01, required: true, min: 0.01 %>
 
-      <%= form.label "#{:driver_name} (optional)" %>
-      <%= form.text_field :driver_name, required: false, minlength: 1, maxlength: 255 %>
-    </div>
+    <%= form.label "#{:driver_name} (optional)" %>
+    <%= form.text_field :driver_name, required: false, minlength: 1, maxlength: 255 %>
+  </div>
 
   <div id="submit">
     <%= form.submit "Create Delivery" %>
   </div>
-<% end %>
+  <% end %>
 
-<%= link_to 'Back to Deliveries', deliveries_path %>
+  <%= link_to 'Back to Deliveries', deliveries_path %>
+
+</div>
