@@ -1,8 +1,9 @@
 <%= stylesheet_link_tag 'deliveries-new' %>
 
 <div id="header">
-  <%= image_tag("foremore-logo.jpeg", id: "logo") %>
-  <h1>New delivery</h1>
+  <%= link_to image_tag("foremore-logo.jpeg", id: "logo"), "/" %>
+
+  <h2>New delivery</h2>
 
   <% if @delivery.errors.any? %>
   <div class="errors">
@@ -39,9 +40,7 @@
 
     <%= form.label "#{:driver_name} (optional)" %>
     <%= form.text_field :driver_name, required: false, minlength: 1, maxlength: 255 %>
-  </div>
 
-  <div id="submit">
     <%= form.submit "Create Delivery" %>
   </div>
   <% end %>

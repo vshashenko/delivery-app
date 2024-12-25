@@ -1,8 +1,9 @@
 <%= stylesheet_link_tag 'deliveries-index' %>
 
 <div id="header">
-  <%= image_tag("foremore-logo.jpeg", id: "logo") %>
-  <h1>Deliveries</h1>
+  <%= link_to image_tag("foremore-logo.jpeg", id: "logo"), "/" %>
+
+  <h2>Deliveries</h2>
 
   <% if flash[:notice] %>
     <div id="notice">
@@ -10,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %>
+  <h3><%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %></h3>
 
   <%= form_with(url: deliveries_path, method: :get, local: true) do %>
     <div id="filter">
@@ -18,11 +19,10 @@
       <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
       <%= label_tag :driver_name, "Filter by Driver name:" %>
       <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+      <%= link_to 'Clear filter', deliveries_path %>
+      <%= submit_tag "Filter" %>
     </div>
-    <%= submit_tag "Filter" %>
   <% end %>
-
-  <%= link_to 'Clear filter', deliveries_path %>
 </div>
 
 <%= paginate @deliveries %>

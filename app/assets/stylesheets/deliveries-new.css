@@ -3,6 +3,7 @@
   grid-template-columns: auto auto;
   gap: 10px;
   max-width: 600px;
+  margin-top: 20px;
 }
 
 input[type="text"] {
@@ -10,9 +11,8 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
-#submit {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-  margin-bottom: 10px;
+#delivery > input[type="submit"] {
+  grid-column: 2;
+  justify-self: end;
+  margin: 10px 0px;
 }
