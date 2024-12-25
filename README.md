@@ -1,7 +1,7 @@
-##### What it is
+## What it is
 A toy demo webapp for a delivery business
 
-##### How to use it
+## How to use it
 
 Check Ruby and Rails version
 
