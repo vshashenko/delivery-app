@@ -26,7 +26,7 @@ class DeliveriesController < ApplicationController
   # Unused, but it's in the assignment
   # We calculate the total cost while getting the items, not needing a separate call
   def total_cost
-    total = Delivery.sum(:cost)
+    total = Delivery.sum(:cost).round(2)
     render json: { total_cost: total }
   end
 
@@ -42,7 +42,7 @@ class DeliveriesController < ApplicationController
       redirect_to deliveries_path, notice: "Delivery was successfully created."
     else
       # render json: { errors: delivery.errors.full_messages }, status: :unprocessable_entity
-      puts @delivery.errors.full_messages
+      # puts @delivery.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
