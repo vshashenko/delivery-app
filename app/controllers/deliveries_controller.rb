@@ -6,12 +6,12 @@ class DeliveriesController < ApplicationController
     itemsPerPage = 10
     page = params[:page] || 1
 
-    query = Delivery.select('*, SUM(cost) OVER () AS total_cost')
+    query = Delivery.select("*, SUM(cost) OVER () AS total_cost")
     if params[:pickup_address].present?
-      query = query.where('LOWER(pickup_address) LIKE ?', "%#{params[:pickup_address].downcase}%")
+      query = query.where("LOWER(pickup_address) LIKE ?", "%#{params[:pickup_address].downcase}%")
     end
     if params[:driver_name].present?
-      query = query.where('LOWER(driver_name) LIKE ?', "%#{params[:driver_name].downcase}%")
+      query = query.where("LOWER(driver_name) LIKE ?", "%#{params[:driver_name].downcase}%")
     end
 
     @deliveries = query.page(page).per(itemsPerPage)
@@ -20,7 +20,7 @@ class DeliveriesController < ApplicationController
     @total_cost = @deliveries.first&.[](:total_cost) || 0
 
     # @deliveries = Delivery.all
-    # @deliveries = Delivery.page(page).per(itemsPerPage)    
+    # @deliveries = Delivery.page(page).per(itemsPerPage)
   end
 
   # Unused, but it's in the assignment
@@ -39,7 +39,7 @@ class DeliveriesController < ApplicationController
 
     if @delivery.save
       # render json: delivery, status: :created
-      redirect_to deliveries_path, notice: 'Delivery was successfully created.'
+      redirect_to deliveries_path, notice: "Delivery was successfully created."
     else
       # render json: { errors: delivery.errors.full_messages }, status: :unprocessable_entity
       puts @delivery.errors.full_messages
@@ -53,12 +53,12 @@ class DeliveriesController < ApplicationController
     # TODO add require for inner fields, remove from permit
     # TODO test missing/overspec fields after ui ready
     params.require(:delivery).permit(
-      :pickup_address, 
-      :delivery_address, 
-      :weight, 
-      :distance, 
-      :scheduled_time, 
-      :cost, 
+      :pickup_address,
+      :delivery_address,
+      :weight,
+      :distance,
+      :scheduled_time,
+      :cost,
       :driver_name
     )
   end

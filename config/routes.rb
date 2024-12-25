@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "deliveries#index"
 
-  get '/deliveries', to: 'deliveries#index'
+  get "/deliveries", to: "deliveries#index"
 
-  get '/deliveries/total_cost', to: 'deliveries#total_cost'
+  get "/deliveries/total_cost", to: "deliveries#total_cost"
 
   get "/deliveries/new", to: "deliveries#new"
 
-  post '/deliveries', to: 'deliveries#create'
+  post "/deliveries", to: "deliveries#create"
 end

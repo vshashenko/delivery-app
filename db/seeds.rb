@@ -9,21 +9,21 @@
 #   end
 
 Delivery.create(
-  pickup_address: '123 Main St', 
-  delivery_address: '456 Oak St', 
-  weight: 5.5, 
-  distance: 10, 
-  scheduled_time: '2024-12-30 14:00:00', 
-  cost: 100.50, 
+  pickup_address: '123 Main St',
+  delivery_address: '456 Oak St',
+  weight: 5.5,
+  distance: 10,
+  scheduled_time: '2024-12-30 14:00:00',
+  cost: 100.50,
   driver_name: 'John Doe'
 )
 
 Delivery.create(
-  pickup_address: '789 Elm St', 
-  delivery_address: '101 Pine St', 
-  weight: 3.2, 
-  distance: 7, 
-  scheduled_time: '2024-12-30 15:30:00', 
-  cost: 50.25, 
+  pickup_address: '789 Elm St',
+  delivery_address: '101 Pine St',
+  weight: 3.2,
+  distance: 7,
+  scheduled_time: '2024-12-30 15:30:00',
+  cost: 50.25,
   driver_name: 'Jane Smith'
 )
