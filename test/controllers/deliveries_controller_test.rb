@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class DeliveriesControllerTest < ActionDispatch::IntegrationTest
   include ActionView::Helpers::NumberHelper
@@ -29,8 +29,8 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create delivery" do
-    assert_difference('Delivery.count') do
-      post deliveries_url, params: { delivery: { pickup_address: '123 Main St', delivery_address: '456 Elm St', weight: 5.0, distance: 10.0, scheduled_time: Time.now + 1.day, cost: 20.0, driver_name: 'John Doe' } }
+    assert_difference("Delivery.count") do
+      post deliveries_url, params: { delivery: { pickup_address: "123 Main St", delivery_address: "456 Elm St", weight: 5.0, distance: 10.0, scheduled_time: Time.now + 1.day, cost: 20.0, driver_name: "John Doe" } }
     end
 
     assert_redirected_to deliveries_path
@@ -40,11 +40,11 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
     get deliveries_total_cost_path
     assert_response :success
     json = JSON.parse(response.body)
-    assert_equal "29.98", json['total_cost']
+    assert_equal "29.98", json["total_cost"]
   end
 
   test "should not create delivery with invalid params" do
-    post deliveries_url, params: { delivery: { pickup_address: '', delivery_address: '', weight: 0, distance: 0, scheduled_time: nil, cost: 0 } }
+    post deliveries_url, params: { delivery: { pickup_address: "", delivery_address: "", weight: 0, distance: 0, scheduled_time: nil, cost: 0 } }
     assert_response :unprocessable_entity
   end
 
