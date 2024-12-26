@@ -13,21 +13,25 @@
 
   <h3><%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %></h3>
 
-  <%= form_with(url: deliveries_path, method: :get, local: true) do %>
-    <div id="filter">
-      <%= label_tag :pickup_address, "Filter by Pickup Address:" %>
-      <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
-      <%= label_tag :driver_name, "Filter by Driver name:" %>
-      <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
-      <%= link_to 'Clear filter', deliveries_path %>
-      <%= submit_tag "Filter" %>
-    </div>
-  <% end %>
 </div>
 
 <%= paginate @deliveries %>
 
 <div id="deliveries">
+  <%= form_with(url: deliveries_path, method: :get, local: true, id: "filter") do %>
+    <div id="filter-buttons">
+      <%= link_to 'Clear filter', deliveries_path %>
+      <%= submit_tag "Apply filter" %>
+    </div>
+    <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+  <% end %>
+
   <% included_columns = ['pickup_address', 'delivery_address', 'weight', 'distance', 'scheduled_time', 'cost', 'driver_name'] %>
   <% included_columns.each do |column| %>
     <div class="header"><strong><%= column.humanize %></strong></div>

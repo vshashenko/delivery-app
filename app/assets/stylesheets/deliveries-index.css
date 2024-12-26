@@ -15,17 +15,24 @@
 
 #filter {
   display: grid;
-  grid-template-columns: auto auto;
-  gap: 2px;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-column: 1/8;
+  grid-row: 1/3;
 }
 
-#filter > input[type="submit"] {
+#filter-buttons {
+  grid-column: 1/8;
+  justify-self: center;
+}
+
+#filter > #filter-buttons > input[type="submit"] {
   justify-self: end;
+  margin-left: 10px;
 }
 
 .pagination {
   display: block;
-  margin: 20px 0;
 }
 
 #deliveries {
@@ -33,7 +40,6 @@
   grid-template-columns: repeat(7, auto);
   grid-template-rows: minmax(30px, auto) auto;
   gap: 1px;
-  margin: 20px 0;
   background-color: #fbfbfc;
 }
 
