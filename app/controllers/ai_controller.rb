@@ -26,7 +26,7 @@ class AiController < ApplicationController
       model: "gpt-4o-mini",
       store: true,
       messages: [
-        { role: "system", content: "You have a table for deliveries with columns 'pick up location' and 'driver name'. When I tell you a phrase, you parse it and reply which parts of the phrase fit the columns. Answer in the format 'pickup_location=value1&driver_name=value2'. If you didn't recognize a part of the phase for any column, use value 'none'." },
+        { role: "system", content: "You have a table for deliveries with columns 'pickup_location', 'delivery_location', 'weight', 'distance', 'cost', 'driver_name'. When I tell you a phrase, you parse it and reply which parts of the phrase fit the columns. Answer in the format 'pickup_location=<value>&pickup_location=<value>&weight=<value>&distance=<value>&cost=<value>&driver_name=<value>'. If you didn't recognize a part of the phase for any column, use value 'none'." },
         { role: "user", content: user_query }
       ],
       max_tokens: 50
@@ -45,7 +45,7 @@ class AiController < ApplicationController
     if gptResponse == "none"
       deliveries_query = nil
     else
-      deliveries_query = gptResponse.gsub("=none", "").gsub("_location", "_address")
+      deliveries_query = gptResponse.gsub("=none", "=").gsub("_location", "_address")
     end
 
     if deliveries_query.blank?

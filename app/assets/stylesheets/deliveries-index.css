@@ -32,6 +32,10 @@
   justify-self: center;
 }
 
+#filter > input[type="number"] {
+  min-width: 10px;
+}
+
 #filter > #filter-buttons > input[type="submit"] {
   justify-self: end;
   margin-left: 10px;

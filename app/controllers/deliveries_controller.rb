@@ -10,6 +10,18 @@ class DeliveriesController < ApplicationController
     if params[:pickup_address].present?
       query = query.where("LOWER(pickup_address) LIKE ?", "%#{params[:pickup_address].downcase}%")
     end
+    if params[:delivery_address].present?
+      query = query.where("LOWER(delivery_address) LIKE ?", "%#{params[:delivery_address].downcase}%")
+    end
+    if params[:weight].present?
+      query = query.where("weight=?", params[:weight])
+    end
+    if params[:distance].present?
+      query = query.where("distance=?", params[:distance])
+    end
+    if params[:cost].present?
+      query = query.where("cost=?", params[:cost])
+    end
     if params[:driver_name].present?
       query = query.where("LOWER(driver_name) LIKE ?", "%#{params[:driver_name].downcase}%")
     end

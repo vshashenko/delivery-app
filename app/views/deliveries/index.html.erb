@@ -26,14 +26,14 @@
   <%= form_with(url: deliveries_path, method: :get, local: true, id: "filter") do %>
     <div id="filter-buttons">
       <%= link_to 'Clear filter', deliveries_path %>
-      <%= submit_tag "Apply filter" %>
+      <%= submit_tag "Apply filter", name: nil %>
     </div>
     <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
+    <%= text_field_tag :delivery_address, params[:delivery_address], placeholder: "Enter delivery address" %>
+    <%= number_field_tag :weight, params[:weight], placeholder: "Enter weight" %>
+    <%= number_field_tag :distance, params[:distance], placeholder: "Enter distance" %>
     <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <%= number_field_tag :cost, params[:cost], placeholder: "Enter cost" %>
     <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
   <% end %>
 
