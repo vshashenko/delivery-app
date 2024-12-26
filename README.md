@@ -24,6 +24,10 @@ If not, follow the [official installation guide]( https://guides.rubyonrails.org
 > cd delivery-app
 ```
 
+Generate an API key on the OpenAI web site.
+Put your key into `.env` file in the root of `delivery-app`. Like this:
+```
+OPENAI_API_KEY=<your_key>
 ```
 > RAILS_ENV=development bin/rails db:reset
 >

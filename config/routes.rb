@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "/deliveries/new", to: "deliveries#new"
 
   post "/deliveries", to: "deliveries#create"
+
+  get "/ai/parse_filter_query"
 end

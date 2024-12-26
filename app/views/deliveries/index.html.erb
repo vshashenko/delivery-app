@@ -13,6 +13,11 @@
 
   <h3><%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %></h3>
 
+  <%= form_with(url: ai_parse_filter_query_path, method: :get, local: true, id: "ai-query") do %>
+    <%= text_field_tag :text, params[:text], placeholder: "Enter filter query to chat gpt" %>
+    <%= submit_tag "Show" %>
+ <% end %>
+
 </div>
 
 <%= paginate @deliveries %>
