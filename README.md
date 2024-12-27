@@ -29,6 +29,9 @@ Put your key into `.env` file in the root of `delivery-app`. Like this:
 ```
 OPENAI_API_KEY=<your_key>
 ```
+
+Start the server:
+```
 > RAILS_ENV=development bin/rails db:reset
 >
 > RAILS_ENV=development bin/rails server
@@ -37,3 +40,5 @@ OPENAI_API_KEY=<your_key>
 ```
 
 In your browser, open http://localhost:3000
+
+&#9432; If chatgpt queries don't work, look at the rails server output for an error message

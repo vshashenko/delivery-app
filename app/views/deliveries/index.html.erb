@@ -15,7 +15,7 @@
 
   <%= form_with(url: ai_parse_filter_query_path, method: :get, local: true, id: "ai-query") do %>
     <%= text_field_tag :text, params[:text], placeholder: "Enter filter query in natural language" %>
-    <%= submit_tag "Show" %>
+    <%= submit_tag "Show", name: nil %>
     <div id="ai-query-info">
       &#9432;
       <span id="ai-query-tooltip">

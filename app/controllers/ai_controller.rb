@@ -36,24 +36,30 @@ class AiController < ApplicationController
     request.body = request_body
 
     response = http.request(request)
+    response_body = JSON.parse(response.body)
 
-    response_data = JSON.parse(response.body)
-    gptResponse = response_data["choices"][0]["message"]["content"]
-    puts "gptResponse=", gptResponse
+    if response.code.to_i == 200
+      gpt_response = response_body["choices"][0]["message"]["content"]
+      puts "gpt_response=", gpt_response
 
-    # postprocess gpt response
-    if gptResponse == "none"
-      deliveries_query = nil
+      # postprocess gpt response
+      if gpt_response == "none"
+        deliveries_query = nil
+      else
+        deliveries_query = gpt_response.gsub("=none", "=").gsub("_location", "_address")
+      end
+
+      if deliveries_query.blank?
+        deliveries_query = ""
+      else
+        deliveries_query = "?" + deliveries_query
+      end
+
+      redirect_to deliveries_path + deliveries_query
     else
-      deliveries_query = gptResponse.gsub("=none", "=").gsub("_location", "_address")
+      puts "gpt response code=", response.code
+      puts "gpt response_body=", response_body
+      redirect_to deliveries_path
     end
-
-    if deliveries_query.blank?
-      deliveries_query = ""
-    else
-      deliveries_query = "?" + deliveries_query
-    end
-
-    redirect_to deliveries_path + deliveries_query
   end
 end
