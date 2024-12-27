@@ -11,20 +11,20 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
     get deliveries_url
     # puts @response.body
     assert_response :success
-    assert_select "h1", "Deliveries"
-    assert_select "div#deliveries > div:nth-child(8)", @delivery.pickup_address
-    assert_select "div#deliveries > div:nth-child(9)", @delivery.delivery_address
-    assert_select "div#deliveries > div:nth-child(10)", @delivery.weight.to_s
-    assert_select "div#deliveries > div:nth-child(11)", @delivery.distance.to_s
-    assert_select "div#deliveries > div:nth-child(12)", @delivery.scheduled_time.strftime("%B %d, %Y %H:%M")
-    assert_select "div#deliveries > div:nth-child(13)", number_to_currency(@delivery.cost)
-    assert_select "div#deliveries > div:nth-child(14)", @delivery.driver_name
+    assert_select "h2", "Deliveries"
+    assert_select "div#deliveries > div:nth-child(9)", @delivery.pickup_address
+    assert_select "div#deliveries > div:nth-child(10)", @delivery.delivery_address
+    assert_select "div#deliveries > div:nth-child(11)", @delivery.weight.to_s
+    assert_select "div#deliveries > div:nth-child(12)", @delivery.distance.to_s
+    assert_select "div#deliveries > div:nth-child(13)", @delivery.scheduled_time.strftime("%B %d, %Y %H:%M")
+    assert_select "div#deliveries > div:nth-child(14)", number_to_currency(@delivery.cost)
+    assert_select "div#deliveries > div:nth-child(15)", @delivery.driver_name
   end
 
   test "should get new" do
     get deliveries_new_path
     assert_response :success
-    assert_select "h1", "New delivery"
+    assert_select "h2", "New delivery"
     # TODO assert other html content
   end
 
