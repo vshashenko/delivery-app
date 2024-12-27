@@ -1,5 +1,11 @@
 ## What it is
-A toy demo webapp for a delivery business
+A toy demo webapp for a delivery business.
+
+Features:
+- List deliveries
+- Filter deliveries using UI fields
+- Filter deliveries using natural language (backed by AI)
+- Create a new delivery
 
 ## How to use it
 
