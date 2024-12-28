@@ -4,8 +4,10 @@ A toy demo webapp for a delivery business.
 Features:
 - List deliveries
 - Filter deliveries using UI fields
-- Filter deliveries using natural language (backed by AI)
+- Filter deliveries using natural language (backed by OpenAI gpt-4o-mini)
 - Create a new delivery
+
+![Example](index-page-demo.png)
 
 ## How to use it
 
@@ -36,7 +38,7 @@ Put your key into `.env` file in the root of `delivery-app`. Like this:
 OPENAI_API_KEY=<your_key>
 ```
 
-Start the server:
+Start the server.
 ```
 > RAILS_ENV=development bin/rails db:reset
 >
@@ -47,4 +49,4 @@ Start the server:
 
 In your browser, open http://localhost:3000
 
-&#9432; If chatgpt queries don't work, look at the rails server output for an error message
+&#9432; If gpt queries don't work, look for an error message in the Rails server output in the terminal.
