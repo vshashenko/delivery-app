@@ -9,6 +9,10 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
+html {
+  font-size: clamp(6px, 3vw, 16px);
+}
+
 #logo {
   width: 100px;
   height: auto;

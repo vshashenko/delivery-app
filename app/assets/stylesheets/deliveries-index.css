@@ -14,13 +14,9 @@
 }
 
 #ai-query {
-  display: grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
   gap: 5px;
-}
-
-#ai-query > input[type="text"] {
-  min-width: 350px;
+  min-width: min(350px, 90%);
 }
 
 #ai-query-info {
