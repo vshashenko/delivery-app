@@ -40,9 +40,7 @@
   border-radius: 6px;
  
   position: absolute;
-  bottom: 120%;
-  left: 50%;
-  margin-left: -125px;
+  transform: translate(-50%, -100%) translateY(-5px);
 }
 
 #ai-query-info:hover > #ai-query-tooltip {
