@@ -1,70 +1,68 @@
 <%= stylesheet_link_tag 'deliveries-index' %>
 
-<div id="header">
-  <%= link_to image_tag("foremore-logo.jpeg", id: "logo"), "/" %>
+<%= link_to image_tag("foremore-logo.jpeg", id: "logo"), "/" %>
+<h2>Deliveries</h2>
 
-  <h2>Deliveries</h2>
-
-  <% if flash[:notice] %>
-    <div id="notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
-  <h3><%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %></h3>
-
-  <%= form_with(url: ai_parse_filter_query_path, method: :get, local: true, id: "ai-query") do %>
-    <%= text_field_tag :text, params[:text], placeholder: "Enter filter query in natural language" %>
-    <%= submit_tag "Show", name: nil %>
-    <div id="ai-query-info">
-      &#9432;
-      <span id="ai-query-tooltip">
-        Example of queries:<br>
-        &#8226; deliveries from amsterdam<br>
-        &#8226; deliveries to paris by john<br>
-        &#8226; deliveries with weight 6 and cost 177
-      </span>
-    </div>
- <% end %>
-
-</div>
-
-<%= paginate @deliveries %>
-
-<div id="deliveries">
-  <%= form_with(url: deliveries_path, method: :get, local: true, id: "filter") do %>
-    <div id="filter-buttons">
-      <%= link_to deliveries_path do %>
-        <%= button_tag "Clear filter", type: "button" %>
-      <% end %>
-      <%= submit_tag "Apply filter", name: nil %>
-    </div>
-    <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
-    <%= text_field_tag :delivery_address, params[:delivery_address], placeholder: "Enter delivery address" %>
-    <%= number_field_tag :weight, params[:weight], placeholder: "Enter weight", min: 0 %>
-    <%= number_field_tag :distance, params[:distance], placeholder: "Enter distance", min: 0 %>
-    <div></div>
-    <%= number_field_tag :cost, params[:cost], placeholder: "Enter cost", step: 0.01, min: 0 %>
-    <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
-  <% end %>
-
-  <% included_columns = ['pickup_address', 'delivery_address', 'weight', 'distance', 'scheduled_time', 'cost', 'driver_name'] %>
-  <% included_columns.each do |column| %>
-    <div class="header"><strong><%= column.humanize %></strong></div>
-  <% end %>
-
-  <% @deliveries.each do |delivery| %>
-    <div><%= delivery.pickup_address %></div>
-    <div><%= delivery.delivery_address %></div>
-    <div><%= delivery.weight %></div>
-    <div><%= delivery.distance %></div>
-    <div><%= delivery.scheduled_time.strftime("%B %d, %Y %H:%M") %></div>
-    <div><%= number_to_currency(delivery.cost) %></div>
-    <div><%= delivery.driver_name || "N/A" %></div>
-  <% end %>
-
-  <div id="total-cost">
-    <strong>Total Cost:</strong><br><%= number_to_currency(@total_cost) %>
+<% if flash[:notice] %>
+  <div id="notice">
+    <%= flash[:notice] %>
   </div>
+<% end %>
 
+<h3><%= link_to "New delivery", deliveries_new_path, id: "new-delivery" %></h3>
+
+<%= form_with(url: ai_parse_filter_query_path, method: :get, local: true, id: "ai-query") do %>
+  <%= text_field_tag :text, params[:text], placeholder: "Enter filter query in natural language" %>
+  <%= submit_tag "Show", name: nil %>
+  <div id="ai-query-info">
+    &#9432;
+    <span id="ai-query-tooltip">
+      Example of queries:<br>
+      &#8226; deliveries from amsterdam<br>
+      &#8226; deliveries to paris by john<br>
+      &#8226; deliveries with weight 6 and cost 177
+    </span>
+  </div>
+<% end %>
+
+<div id="deliveries-with-pagination">
+  <%= paginate @deliveries %>
+
+  <div id="deliveries">
+    <%= form_with(url: deliveries_path, method: :get, local: true, id: "filter") do %>
+      <div id="filter-buttons">
+        <%= link_to deliveries_path do %>
+          <%= button_tag "Clear filter", type: "button" %>
+        <% end %>
+        <%= submit_tag "Apply filter", name: nil %>
+      </div>
+      <%= text_field_tag :pickup_address, params[:pickup_address], placeholder: "Enter pickup address" %>
+      <%= text_field_tag :delivery_address, params[:delivery_address], placeholder: "Enter delivery address" %>
+      <%= number_field_tag :weight, params[:weight], placeholder: "Enter weight", min: 0 %>
+      <%= number_field_tag :distance, params[:distance], placeholder: "Enter distance", min: 0 %>
+      <div></div>
+      <%= number_field_tag :cost, params[:cost], placeholder: "Enter cost", step: 0.01, min: 0 %>
+      <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
+    <% end %>
+
+    <% included_columns = ['pickup_address', 'delivery_address', 'weight', 'distance', 'scheduled_time', 'cost', 'driver_name'] %>
+    <% included_columns.each do |column| %>
+      <div class="header"><strong><%= column.humanize %></strong></div>
+    <% end %>
+
+    <% @deliveries.each do |delivery| %>
+      <div><%= delivery.pickup_address %></div>
+      <div><%= delivery.delivery_address %></div>
+      <div><%= delivery.weight %></div>
+      <div><%= delivery.distance %></div>
+      <div><%= delivery.scheduled_time.strftime("%B %d, %Y %H:%M") %></div>
+      <div><%= number_to_currency(delivery.cost) %></div>
+      <div><%= delivery.driver_name || "N/A" %></div>
+    <% end %>
+
+    <div id="total-cost">
+      <strong>Total Cost:</strong><br><%= number_to_currency(@total_cost) %>
+    </div>
+
+  </div>
 </div>
