@@ -66,8 +66,8 @@ body > h2 {
   text-decoration: none;
 }
 
-#filter > input[type="number"] {
-  min-width: 10px;
+#filter > input {
+  min-width: 0;
 }
 
 #filter > #filter-buttons > input[type="submit"] {
