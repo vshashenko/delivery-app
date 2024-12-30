@@ -14,7 +14,7 @@
 <%= form_with(url: ai_parse_filter_query_path, method: :get, local: true, id: "ai-query") do %>
   <%= text_field_tag :text, params[:text], placeholder: "Enter filter query in natural language" %>
   <%= submit_tag "Show", name: nil %>
-  <div id="ai-query-info">
+  <span id="ai-query-info">
     &#9432;
     <span id="ai-query-tooltip">
       Example of queries:<br>
@@ -22,7 +22,7 @@
       &#8226; deliveries to paris by john<br>
       &#8226; deliveries with weight 6 and cost 177
     </span>
-  </div>
+  </span>
 <% end %>
 
 <div id="deliveries-with-pagination">

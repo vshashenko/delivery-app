@@ -16,8 +16,13 @@ body > h2 {
 
 #ai-query {
   display: flex;
+  justify-content: center;
   gap: 5px;
   min-width: min(350px, 90%);
+}
+
+#ai-query > input[type="text"] {
+  flex-grow: 1; 
 }
 
 #ai-query-info {
