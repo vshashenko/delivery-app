@@ -32,7 +32,6 @@ body > h2 {
 
 #ai-query-info > #ai-query-tooltip {
   visibility: hidden;
-  font-family: 'Arial', sans-serif;
   font-size: 1rem;
   color: #2a2a2a;
   white-space: nowrap;
@@ -40,7 +39,6 @@ body > h2 {
   background-color: lightyellow;
   padding: 5px;
   border-radius: 6px;
- 
   position: absolute;
   transform: translate(-100%, -100%) translateY(-5px);
 }
