@@ -6,6 +6,7 @@ Features:
 - Filter deliveries using UI fields
 - Filter deliveries using natural language (backed by OpenAI gpt-4o-mini)
 - Create a new delivery
+- Client and server side validation
 - Responsive UI
 
 ![Example](index-page-demo.png)
