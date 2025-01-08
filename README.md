@@ -1,5 +1,5 @@
 ## What it is
-A toy demo webapp for a delivery business.
+A full-stack toy demo webapp for a delivery business.
 
 Features:
 - List deliveries
