@@ -40,7 +40,7 @@
       <%= text_field_tag :delivery_address, params[:delivery_address], placeholder: "Enter delivery address" %>
       <%= number_field_tag :weight, params[:weight], placeholder: "Enter weight", min: 0 %>
       <%= number_field_tag :distance, params[:distance], placeholder: "Enter distance", min: 0 %>
-      <div></div>
+      <%= datetime_local_field_tag :scheduled_time, nil, disabled: true %>
       <%= number_field_tag :cost, params[:cost], placeholder: "Enter cost", step: 0.01, min: 0 %>
       <%= text_field_tag :driver_name, params[:driver_name], placeholder: "Enter driver name" %>
     <% end %>
